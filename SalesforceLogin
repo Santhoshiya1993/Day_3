@@ -1,0 +1,16 @@
+import {test} from "@playwright/test";
+test.only('salesforce automation',async({page})=>{//to open multiple page instead of async({page}) use async({context})
+await page.goto("https://login.salesforce.com");
+const username= page.locator("input[id='username']");
+const password=  page.locator("input[id='password']");
+const button=  page.locator("input[id='Login']");
+const applauncher=page.locator("div[class='slds-icon-waffle']");
+const viewall=page.locator("button[aria-label='View All Applications']");
+const search=page.locator("input[placeholder='Search apps or items...']");
+await username.fill("santhoshiya@testleaf.com");
+await password.fill("Gurusanty02");
+await button.click();
+await applauncher.click();
+await viewall.click();
+await search.fill("Sales");
+})
