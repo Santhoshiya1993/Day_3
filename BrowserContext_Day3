@@ -1,0 +1,14 @@
+import { chromium,test} from "@playwright/test";
+test('open url',async()=>{
+const mybrowser=await chromium.launch({headless:false})
+const context1=await mybrowser.newContext();
+const context2=await mybrowser.newContext();
+const page=await context1.newPage();
+await page.goto("https://www.google.com");
+const page2=await context2.newPage();
+await page2.goto("https://www.saucedemo.com/");
+await page.waitForTimeout(10000);
+await page2.waitForTimeout(10000);
+const url=page.url();
+console.log(`URL opened is ${url}`);
+})
